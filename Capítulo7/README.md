@@ -1,4 +1,4 @@
-# Implementación de una estrategia de backup y restauración
+# Práctica 7. Implementación de una estrategia de backup y restauración
 
 ## Objetivo de la práctica:
 - Comprender la importancia de las estrategias de respaldo y restauración en la protección y recuperación de datos en entornos de producción.
@@ -25,13 +25,13 @@ En SQL Server, existen varios tipos de respaldos que se utilizan en combinación
 - Backup del log de transacciones: Permite respaldar los registros de transacciones y es crucial para estrategias de recuperación punto en tiempo.<br>
 
 **2. Configuración de una estrategia de backup** <br>
-La estrategia que vamos a implementar en esta práctica consistirá en:
+La estrategia a implementar en esta práctica va a consistir en:
 - Realizar un backup completo de la base de datos.
 - Programar un backup diferencial diario.
 - Ejecutar backups del log de transacciones cada hora para minimizar la pérdida de datos.
 
 **3. Realización de un backup completo** <br>
-Ejecuta el siguiente comando para crear un backup completo de la base de datos:
+Ejecutar el siguiente comando para crear un backup completo de la base de datos:
  ```sql
 -- Realizar un backup completo de la base de datos
 BACKUP DATABASE [NombreBaseDatos]
@@ -62,10 +62,10 @@ Se recomienda programar estos backups de log en intervalos regulares, como cada 
 
 **6. Programación de backups automáticos** <br>
 Configurar trabajos en el Agente de SQL Server:
-- Accede a SQL Server Agent > Jobs y crea un nuevo trabajo para programar backups automáticos.
-- Define un job para realizar el backup completo una vez a la semana.
-- Configura otro job para realizar backups diferenciales diariamente.
-- Configura un tercer job para ejecutar backups del log de transacciones cada hora.
+- Acceder a SQL Server Agent > Jobs y crear un nuevo trabajo para programar backups automáticos.
+- Definir un job para realizar el backup completo una vez a la semana.
+- Configurar otro job para realizar backups diferenciales diariamente.
+- Configurar un tercer job para ejecutar backups del log de transacciones cada hora.
 
 **7. Restauración de una base de datos** <br>
 La restauración de una base de datos puede involucrar múltiples pasos dependiendo de los backups disponibles y la estrategia utilizada.<br>
@@ -78,7 +78,7 @@ La restauración de una base de datos puede involucrar múltiples pasos dependie
     MOVE 'NombreBaseDatos_Log' TO 'C:\SQLLogs\NombreBaseDatos_Log.ldf',
     REPLACE, NORECOVERY;
     ```
-- Restaurar desde un backup diferencial: Si hay un backup diferencial, debes restaurar primero el backup completo con la opción NORECOVERY y luego el backup diferencial:
+- Restaurar desde un backup diferencial: Si hay un backup diferencial, restaurar primero el backup completo con la opción NORECOVERY y luego el backup diferencial:
     ```sql
     -- Restaurar un backup diferencial
     RESTORE DATABASE [NombreBaseDatosRestaurada]
@@ -93,8 +93,8 @@ La restauración de una base de datos puede involucrar múltiples pasos dependie
     WITH STOPAT = '2024-09-01 12:00:00', RECOVERY;
     ```
 **8. Pruebas y verificación de la restauración** <br>
-- Después de restaurar la base de datos, verifica que la base de datos esté funcional y que los datos estén intactos.
-- Revisa los logs del servidor SQL y los detalles de la operación de restauración para confirmar que no hubo errores.
+- Después de restaurar la base de datos, verificar que la base de datos esté funcional y que los datos estén intactos.
+- Revisar los logs del servidor SQL y los detalles de la operación de restauración para confirmar que no hubo errores.
 
 ### Resultado esperado
 Al finalizar la práctica, los estudiantes deben ser capaces de:
