@@ -113,7 +113,7 @@ Crear una nueva regla de entrada y seleccionar que es una regla que controla las
  ![imagen instalacion](../images/Capitulo%201/img23.png)<br>
  ![imagen instalacion](../images/Capitulo%201/img24.png)<br>
 
- Escoger un nombre de la regla, puede ser por ejemplo Regla SQL
+ Escoger un nombre de la regla, puede ser por ejemplo Regla SQL.
 
   ![imagen instalacion](../images/Capitulo%201/img25.png)<br>
 
