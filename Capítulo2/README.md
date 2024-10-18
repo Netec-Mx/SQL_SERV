@@ -1,4 +1,4 @@
-# Creación y ejecución de consultas básicas
+# Práctica 2. Creación y ejecución de consultas básicas
 
 ## Objetivos de la práctica:
 - Comprender los fundamentos de las consultas SQL para recuperar datos de una base de datos.
@@ -14,20 +14,20 @@
 
 ## Instrucciones:
 - Configuración inicial:
-    - Abre SQL Server Management Studio (SSMS).
-    - Conéctate a la base de datos de prueba proporcionada
+    - Abrir SQL Server Management Studio (SSMS).
+    - Conectarse a la base de datos de prueba proporcionada.
 - Consulta 1: Selección básica de datos
-    - Realiza una consulta simple para seleccionar todas las columnas de una tabla específica.
+    - Realizar una consulta simple para seleccionar todas las columnas de una tabla específica.
 - Consulta 2: Filtrado de datos
-    -  Filtra los resultados de la tabla xxxxx para mostrar solo aquellos registros donde el campo xxxxxx sea igual a 5.
+    -  Filtrar los resultados de la tabla xxxxx para mostrar solo aquellos registros donde el campo xxxxxx sea igual a 5.
 - Consulta 3: Ordenación de resultados 
-    - Ordena los registros filtrados de la consulta anterior en orden ascendente por el campo
+    - Ordenar los registros filtrados de la consulta anterior en orden ascendente por el campo.
 - Consulta 4: Funciones de agregación
-    - Cuenta cuántos clientes hay en cada territorio
+    - Contar cuántos clientes hay en cada territorio.
 - Consulta 5: Uniones de tablas (JOIN)
-    -  Une dos tablas para obtener información combinada. Para obtener el número de pedido y el cliente que lo realizó.
+    -  Unir dos tablas para obtener información combinada. Para obtener el número de pedido y el cliente que lo realizó.
 - Consulta 6: Subconsultas (Subquery)
-    - Realiza una subconsulta para encontrar el cliente con el mayor número de pedidos. Primero usa una subconsulta para contar los pedidos por cliente y luego filtra el resultado.
+    - Realizar una subconsulta para encontrar el cliente con el mayor número de pedidos. Primero, usar una subconsulta para contar los pedidos por cliente y luego filtrar el resultado.
 
 ## Codigos de ayuda
 1. **Selección básica de datos (SELECT)**
