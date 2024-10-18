@@ -26,6 +26,7 @@
 - Si deseas que las alertas envíen correos electrónicos, primero debes configurar Database Mail.<br>
 - Configurar Database Mail desde el Explorador de Objetos > Management > Database Mail > "Configure Database Mail".<br>
  Sigue los pasos del asistente para configurar un perfil de correo.<br>
+
 **C.** Crear un operador:<br>
 
 - Un operador es un contacto a quien se le enviarán alertas. Ir a SQL Server Agent > Operators > "New Operator".<br>
