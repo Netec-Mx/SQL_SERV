@@ -45,18 +45,18 @@
     (10, 'Pedro Castillo', 'pedro@example.com');
     ```
 4. Configurar la Replicación:
-    - Establece uno de los servidores como el publicador y el otro como el suscriptor.
+    - Establecer uno de los servidores como el publicador y el otro como el suscriptor.
     - Configurar la replicación transaccional entre los dos servidores. Usar el asistente de configuración de replicación en SSMS para facilitar el proceso.
 5. Probar la Replicación:
     - Realizar cambios en la base de datos del publicador y verificar que se reflejen en la base de datos del suscriptor.
 
 ### Parte 2: Log Shipping
 Configurar Log Shipping:
-- Selecciona uno de los servidores como servidor primario y el otro como servidor secundario.
-- Realiza los siguientes pasos:
-    - Habilita el Log Shipping en el servidor primario.
-    - Configura el backup del log de transacciones.
-    -  Establece un programa de restauración en el servidor secundario.
+- Seleccionar uno de los servidores como servidor primario y el otro como servidor secundario.
+- Realizar los siguientes pasos:
+    - Habilitar el Log Shipping en el servidor primario.
+    - Configurar el backup del log de transacciones.
+    -  Establecer un programa de restauración en el servidor secundario.
 - Probar Log Shipping:
 
 Realiza algunas transacciones en la base de datos del servidor primario y verifica que los logs se envían y aplican en el servidor secundario.
