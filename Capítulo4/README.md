@@ -1,4 +1,4 @@
-# Optimización de una consulta compleja
+# Práctica 4. Optimización de una consulta compleja
 
 ## Objetivo de la práctica:
 - Entender los principios fundamentales del query tuning (optimización de consultas) en SQL Server.
@@ -14,7 +14,7 @@
 Para esta práctica es recomendable trabajar con una base de datos que contenga un gran volumen de información (varios miles o millones de registros) para observar diferencias significativas en el rendimiento antes y después de la optimización.<br>
 Puedes utilizar:
 - La base de datos de ejemplo AdventureWorks2019 de SQL Server (que contiene gran cantidad de datos).
-- Generar una tabla con datos masivos de prueba si no se tiene una base de datos disponible
+- Generar una tabla con datos masivos de prueba si no se tiene una base de datos disponible.
 ## Instrucciones 
 
 ### Preparación del entorno:
@@ -78,17 +78,17 @@ WHERE YEAR(FechaVenta) = 2023  -- Uso de una función que deshabilita el uso de 
   AND Cliente LIKE '%50%'      -- Búsqueda con un comodín al inicio que también evita índices
 ORDER BY Precio DESC;           -- Ordenación de una columna sin índice
 ```
-Para analizar el rendimiento de la consulta, utiliza la opción de "Mostrar plan de ejecución estimado" en SQL Server Management Studio (SSMS) o ejecuta la consulta con SET STATISTICS TIME ON; y SET STATISTICS IO ON; para obtener información detallada sobre el tiempo de ejecución y el uso de recursos.
+Para analizar el rendimiento de la consulta, utilizar la opción de "Mostrar plan de ejecución estimado" en SQL Server Management Studio (SSMS) o ejecutar la consulta con SET STATISTICS TIME ON; y SET STATISTICS IO ON; para obtener información detallada sobre el tiempo de ejecución y el uso de recursos.
 
 ### Análisis del plan de ejecución:
-Observa el plan de ejecución para identificar cuellos de botella, como:
+Observar el plan de ejecución para identificar cuellos de botella, como:
 - Escaneos de tabla completos (Table Scan) en lugar de índices.
 - Uso excesivo de memoria o CPU.
 - Filtros aplicados después de un escaneo completo en vez de utilizar índices eficientes.
 
 ### Optimización de la consulta:
 1. Creación de índices:
-Si el plan de ejecución muestra que se está haciendo un Table Scan sobre la Tabla Ventas, es posible que no haya un índice adecuado para la consulta. Crea un índice sobre las columnas FechaVenta y Monto para mejorar el rendimiento de las consultas con filtros y agregaciones:
+Si el plan de ejecución muestra que se está haciendo un Table Scan sobre la Tabla Ventas, es posible que no haya un índice adecuado para la consulta. Crear un índice sobre las columnas FechaVenta y Monto para mejorar el rendimiento de las consultas con filtros y agregaciones:
 ```sql
 -- Crear un índice en FechaVenta
 CREATE INDEX IDX_Ventas_FechaVenta ON Ventas(FechaVenta);
@@ -100,7 +100,7 @@ CREATE INDEX IDX_Ventas_Cliente ON Ventas(Cliente);
 CREATE INDEX IDX_Ventas_Precio ON Ventas(Precio);
 ```
 2. Reestructuración de la consulta:
-Optimiza la consulta aprovechando índices y evitando subconsultas o funciones que ralenticen la ejecución. Si tu consulta contiene subconsultas innecesarias, reescríbela para simplificarla.
+Optimizar la consulta aprovechando índices y evitando subconsultas o funciones que ralenticen la ejecución. Si tu consulta contiene subconsultas innecesarias, reescribirla para simplificarla.
 ```sql
 -- Consulta optimizada
 SELECT VentaID, Cliente, NumeroPedido, Precio, FechaVenta
@@ -113,14 +113,14 @@ ORDER BY Precio DESC;            -- Ordenación optimizada gracias al índice en
 En algunos casos, puedes usar hints para optimizar aún más. Por ejemplo, si sabes que los índices deberían estar siendo usados, puedes forzarlos con INDEX o FORCESEEK.
 
 ### Reevaluación del rendimiento:
-Vuelve a ejecutar la consulta optimizada y compara los tiempos de ejecución y uso de recursos con los de la consulta original.<br>
-Revisa nuevamente el plan de ejecución para verificar si ahora se utilizan los índices creados, y si los escaneos completos han sido reemplazados por búsquedas eficientes (Index Seek).
+Vuelve a ejecutar la consulta optimizada y compar los tiempos de ejecución y uso de recursos con los de la consulta original.<br>
+Revisar nuevamente el plan de ejecución para verificar si ahora se utilizan los índices creados, y si los escaneos completos han sido reemplazados por búsquedas eficientes (Index Seek).
 
 
 ### Análisis y recomendaciones:
-Discute cómo los cambios realizados mejoraron el rendimiento. ¿Hubo una reducción significativa en el tiempo de ejecución? ¿Se optimizó el uso de memoria y CPU?<br>
-Menciona otras estrategias que podrían aplicarse en diferentes situaciones, como la partición de tablas, materialización de vistas o uso de columnas calculadas.<br>
-Realizar diferentes consultas que sean ineficientes sin uso de índices y luego realizar la creación de índices para verificar los rendimientos. A su vez, dar realizar un escrito sobre que significa los parallelism, sort, clustered index scan, entre otros que pueden aparecer en el execution plan. 
+Discutir cómo los cambios realizados mejoraron el rendimiento. ¿Hubo una reducción significativa en el tiempo de ejecución? ¿Se optimizó el uso de memoria y CPU?<br>
+Mencionar otras estrategias que podrían aplicarse en diferentes situaciones, como la partición de tablas, materialización de vistas o uso de columnas calculadas.<br>
+Realizar diferentes consultas que sean ineficientes sin uso de índices y luego realizar la creación de índices para verificar los rendimientos. A su vez, realizar un escrito sobre que significa los parallelism, sort, clustered index scan, entre otros que pueden aparecer en el execution plan. 
 
 
 ### Resultado esperado
