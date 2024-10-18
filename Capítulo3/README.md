@@ -1,4 +1,4 @@
-# Diseño de una base de datos normalizada 
+# Práctica 3. Diseño de una base de datos normalizada 
 
 ## Objetivos de la práctica:
 Al finalizar la práctica, serás capaz de:
