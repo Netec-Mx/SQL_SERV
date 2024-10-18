@@ -1,4 +1,4 @@
-# Creación y manejo de particiones 
+# Práctica 6. Creación y manejo de particiones 
 
 ## Objetivos de la práctica:
 - Comprender las estrategias de particionamiento de tablas en SQL Server y su importancia para mejorar el rendimiento y la administración de datos.
@@ -23,7 +23,7 @@ El particionamiento de tablas permite dividir grandes cantidades de datos en seg
 En esta práctica, trabajaremos con el particionamiento por rango utilizando fechas.
 
 **2. Creación de una tabla de ejemplo con gran volumen de datos**<br>
-Asegúrate de tener una tabla con un volumen de datos significativo. Utiliza la siguiente consulta para crear una tabla de ventas con datos de varios años:
+Asegurarse de tener una tabla con un volumen de datos significativo. Utilizar la siguiente consulta para crear una tabla de ventas con datos de varios años:
 ```sql
  CREATE TABLE Ventas (
     VentaID INT PRIMARY KEY,
@@ -74,7 +74,7 @@ BEGIN
 END;
 ```
 **3. Definir una función de partición**<br>
-El primer paso en la implementación de particiones es crear una función de partición que defina cómo se segmentarán los datos. Para este caso, vamos a particionar la tabla Ventas en función de la columna FechaVenta, distribuyéndola en diferentes años.
+El primer paso en la implementación de particiones es crear una función de partición que defina cómo se segmentarán los datos. Para este caso, particionar la tabla Ventas en función de la columna FechaVenta, distribuyéndola en diferentes años.
  ```sql
   CREATE PARTITION FUNCTION PF_VentasPorFecha (DATE)
 AS
@@ -83,16 +83,16 @@ AS
 Esta función distribuye las filas de acuerdo a la fecha: las ventas anteriores a 2022 en una partición, las de 2023 en otra, y así sucesivamente.
 
 **4. Crear un esquema de particionamienton**<br>
-El siguiente paso es crear un esquema de particionamiento que defina dónde se almacenarán físicamente las particiones. Puedes distribuirlas en el mismo disco o en diferentes discos para mejorar el rendimiento:
+El siguiente paso es crear un esquema de particionamiento que defina dónde se almacenarán físicamente las particiones. Se pueden distribuir en el mismo disco o en diferentes discos para mejorar el rendimiento:
  ```sql
   CREATE PARTITION SCHEME PS_VentasPorFecha
 AS PARTITION PF_VentasPorFecha
-TO (PRIMARY, PRIMARY, PRIMARY, PRIMARY);  -- Puedes especificar diferentes archivos de grupo para cada partición si lo deseas
+TO (PRIMARY, PRIMARY, PRIMARY, PRIMARY);  -- Especificar diferentes archivos de grupo para cada partición si se deseas
 ```
 En este ejemplo, todas las particiones estarán en el mismo grupo de archivos PRIMARY, pero en un entorno de producción puedes distribuir las particiones en diferentes grupos de archivos para un mejor rendimiento.
 
 **5. Crear la tabla particionada**<br>
-Ahora crea la tabla Ventas utilizando el esquema de particionamiento:
+Crear la tabla Ventas utilizando el esquema de particionamiento:
  ```sql
 CREATE TABLE Ventas_particionada (
     VentaID INT PRIMARY KEY,
@@ -105,26 +105,26 @@ CREATE TABLE Ventas_particionada (
 Esto indica que la tabla se dividirá en particiones basadas en la columna FechaVenta.
 
 **6. Insertar datos en la tabla particionada**<br>
-Una vez creada la tabla particionada, puedes comenzar a insertar datos. Los datos se asignarán automáticamente a la partición correspondiente basada en la FechaVenta.
+Una vez creada la tabla particionada, comenzar a insertar datos. Los datos se asignarán automáticamente a la partición correspondiente basada en la FechaVenta.
  ```sql
 -- Insertar datos en la tabla particionada EJEMPLO
 INSERT INTO Ventas_Particionada (VentaID, ClienteID, ProductoID, FechaVenta, Monto)
 SELECT VentaID, ClienteID, ProductoID, FechaVenta, Monto FROM Ventas;
 ```
 **7. Consultar la tabla particionada**<br>
-Puedes ejecutar consultas que solo afecten a una partición específica para mejorar el rendimiento:
+Se pueden ejecutar consultas que solo afecten a una partición específica para mejorar el rendimiento:
 ```sql
--- Consulta que accede solo a una partición (año 2017)
+-- Consultar que accede solo a una partición (año 2017)
 SELECT *
 FROM Ventas_Particionada
 WHERE FechaVenta BETWEEN '2017-01-01' AND '2017-12-31';
 ```
-Verifica el plan de ejecución de la consulta en SSMS para asegurarte de que solo se accede a la partición correspondiente.
+Verificar el plan de ejecución de la consulta en SSMS para asegurarse de que solo se accede a la partición correspondiente.
 
 **8. Mantenimiento de particiones**<br>
-A medida que los datos crecen, es posible que necesites agregar nuevas particiones. Para ello, puedes modificar la función de partición:
+A medida que los datos crecen, es posible que sea necesario agregar nuevas particiones. Para ello, modificar la función de partición:
  ```sql
--- Consulta que accede solo a una partición (año 2017)
+-- Consultar que accede solo a una partición (año 2017)
 -- Agregar una nueva partición para datos de 2020
 ALTER PARTITION FUNCTION VentasRangoFecha() 
 SPLIT RANGE ('2023-01-01');
