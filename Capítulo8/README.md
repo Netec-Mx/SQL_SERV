@@ -1,4 +1,4 @@
-# Configuración de un entorno de alta disponibilidad
+# Práctica 8. Configuración de un entorno de alta disponibilidad
 
 ## Objetivos de la práctica:
 - Entender los conceptos de replicación en SQL Server, incluyendo los diferentes tipos (snapshot, transactional y merge).
@@ -20,8 +20,8 @@
 ## Instrucciones 
 ### Parte 1: Replicación de Bases de Datos
 1. Crear la Base de Datos de Ejemplo:
-2. Abre SSMS y crea una nueva base de datos llamada BaseDatosEjemplo.
-3. Crea una tabla llamada Clientes con las siguientes columnas: Id (int), Nombre (varchar(50)), Email (varchar(50)).
+2. Abrir SSMS y crear una nueva base de datos llamada BaseDatosEjemplo.
+3. Crear una tabla llamada Clientes con las siguientes columnas: Id (int), Nombre (varchar(50)), Email (varchar(50)).
     ```sql
     CREATE DATABASE BaseDatosEjemplo;
     USE BaseDatosEjemplo;
@@ -46,9 +46,9 @@
     ```
 4. Configurar la Replicación:
     - Establece uno de los servidores como el publicador y el otro como el suscriptor.
-    - Configura la replicación transaccional entre los dos servidores. Puedes usar el asistente de configuración de replicación en SSMS para facilitar el proceso.
+    - Configurar la replicación transaccional entre los dos servidores. Usar el asistente de configuración de replicación en SSMS para facilitar el proceso.
 5. Probar la Replicación:
-    - Realiza cambios en la base de datos del publicador y verifica que se reflejen en la base de datos del suscriptor.
+    - Realizar cambios en la base de datos del publicador y verificar que se reflejen en la base de datos del suscriptor.
 
 ### Parte 2: Log Shipping
 Configurar Log Shipping:
@@ -63,15 +63,15 @@ Realiza algunas transacciones en la base de datos del servidor primario y verifi
 
 ### Parte 3: Mirroring
 - Configurar Mirroring:
-    - Selecciona un servidor como servidor principal y el otro como servidor espejo.
-    - Configura la base de datos para el mirroring:
-    - Inicia el proceso de mirroring y selecciona la opción de sincronización completa.
+    - Seleccionar un servidor como servidor principal y el otro como servidor espejo.
+    - Configurar la base de datos para el mirroring:
+    - Iniciar el proceso de mirroring y seleccionar la opción de sincronización completa.
 - Probar el Mirroring:
-    - Realiza cambios en la base de datos del servidor principal y verifica que se reflejan en el servidor espejo.
+    - Realizar cambios en la base de datos del servidor principal y verificar que se reflejan en el servidor espejo.
 
 ## Reporte
-- Documenta el proceso que seguiste para cada parte de la práctica, incluyendo cualquier problema encontrado y cómo lo resolviste.
-- Presenta un breve informe sobre las ventajas y desventajas de cada enfoque (replicación, Log Shipping y Mirroring).Importancia de los Backups y la Alta Disponibilidad
+- Documentar el proceso que seguiste para cada parte de la práctica, incluyendo cualquier problema encontrado y cómo lo resolviste.
+- Presentar un breve informe sobre las ventajas y desventajas de cada enfoque (replicación, Log Shipping y Mirroring).Importancia de los Backups y la Alta Disponibilidad
 
 ### Backups (Respaldos):
 Los respaldos de bases de datos son fundamentales en cualquier sistema productivo. Garantizan que, en caso de un fallo grave, ya sea por corrupción de datos, errores humanos o desastres naturales, la información se pueda recuperar con un mínimo de pérdida. Sin respaldos regulares, las empresas se exponen a la pérdida de datos crítica, afectando operaciones, reputación y causando pérdidas económicas significativas.
