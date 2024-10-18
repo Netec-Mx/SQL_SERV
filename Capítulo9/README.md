@@ -23,7 +23,7 @@
 
 - Inicializar un repositorio Git local para gestionar los scripts de la base de datos.
 - Crear una estructura organizada de carpetas para almacenar scripts SQL (e.g., /scripts/alteraciones/, /scripts/mantenimiento/).
-- Agregar un script de creación o modificación de base de datos al repositorio y realiza el commit inicial.
+- Agregar un script de creación o modificación de base de datos al repositorio y realizar el commit inicial.
 
 **2. Automatización de Tareas Administrativas:**
 - Crear y documentar scripts para automatizar tareas comunes de administración en SQL Server, como:
@@ -124,10 +124,10 @@ EXEC sp_MSforeachtable 'UPDATE STATISTICS ? WITH FULLSCAN';
 - Mantenimiento de Índices y Estadísticas: Configurar otro job en el SQL Server Agent para ejecutar los scripts de mantenimiento de índices y actualización de estadísticas en horarios de baja actividad, como durante la noche.
 
 ### Instrucciones para Configurar Tareas en SQL Server Agent:
-- Abre SQL Server Management Studio (SSMS).
-- Expande el nodo de SQL Server Agent.
-- Crear un nuevo Job y agrega un Step que ejecute los scripts anteriores según el mantenimiento que quieras automatizar (backups, índices o estadísticas).
-- Definir el Schedule de acuerdo a la frecuencia deseada (diario, semanal, etc.).
+- Abrir SQL Server Management Studio (SSMS).
+- Expandir el nodo de SQL Server Agent.
+- Crear un nuevo Job y agregar un Step que ejecute los scripts anteriores según el mantenimiento que quieras automatizar (backups, índices o estadísticas).
+- Definir el Schedule de acuerdo a la frecuencia deseada (diario, semanal, etc.)
 - Guardar el Job y verificar que se ejecute correctamente según lo programado.
 
 
