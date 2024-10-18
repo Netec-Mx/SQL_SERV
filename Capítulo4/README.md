@@ -113,7 +113,7 @@ ORDER BY Precio DESC;            -- Ordenación optimizada gracias al índice en
 En algunos casos, puedes usar hints para optimizar aún más. Por ejemplo, si sabes que los índices deberían estar siendo usados, puedes forzarlos con INDEX o FORCESEEK.
 
 ### Reevaluación del rendimiento:
-Vuelve a ejecutar la consulta optimizada y compar los tiempos de ejecución y uso de recursos con los de la consulta original.<br>
+Ejecutar nuevamente la consulta optimizada y comparar los tiempos de ejecución y uso de recursos con los de la consulta original.<br>
 Revisar nuevamente el plan de ejecución para verificar si ahora se utilizan los índices creados, y si los escaneos completos han sido reemplazados por búsquedas eficientes (Index Seek).
 
 
