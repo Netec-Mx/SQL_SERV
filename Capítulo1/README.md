@@ -53,7 +53,7 @@ Seleccionar la edición “Developer”, no es necesario poner ninguna llave.
 
 ![imagen instalacion](../images/Capitulo%201/img9.png)<br>
 
-En nuestro caso, como solo deseamos SQL Server, se van a seleccionar las siguientes opciones que están señaladas en la siguiente imagen. 
+En este caso, como solo deseamos SQL Server, se van a seleccionar las siguientes opciones que están señaladas en la siguiente imagen. 
 
 ![imagen instalacion](../images/Capitulo%201/img10.png)<br>
 
