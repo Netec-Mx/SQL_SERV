@@ -1,7 +1,7 @@
-# Implementación de un Pipeline de CI/CD para Bases de Datos
+# Práctica 9. Implementación de un Pipeline de CI/CD para Bases de Datos
 
 ## Objetivos de la práctica:
-- Implementar un pipeline de CI/CD (Integración Continua y Despliegue Continuo) para bases de datos en un entorno local.
+- Implementar un Pipeline de CI/CD (Integración Continua y Despliegue Continuo) para bases de datos en un entorno local.
 - Automatizar tareas administrativas comunes en SQL Server como backups, optimización de índices, y mantenimiento de estadísticas.
 - Configurar pruebas automatizadas para validar el correcto funcionamiento de los cambios aplicados en la base de datos.
 - Realizar pruebas unitarias y de integración en la base de datos antes de desplegar cambios.
@@ -21,42 +21,42 @@
 ## Instrucciones 
 **1. Configuración de Control de Versiones (Git):**
 
-- Inicializa un repositorio Git local para gestionar los scripts de la base de datos.
-- Crea una estructura organizada de carpetas para almacenar scripts SQL (e.g., /scripts/alteraciones/, /scripts/mantenimiento/).
-- Agrega un script de creación o modificación de base de datos al repositorio y realiza el commit inicial.
+- Inicializar un repositorio Git local para gestionar los scripts de la base de datos.
+- Crear una estructura organizada de carpetas para almacenar scripts SQL (e.g., /scripts/alteraciones/, /scripts/mantenimiento/).
+- Agregar un script de creación o modificación de base de datos al repositorio y realiza el commit inicial.
 
 **2. Automatización de Tareas Administrativas:**
-- Crea y documenta scripts para automatizar tareas comunes de administración en SQL Server, como:
+- Crear y documentar scripts para automatizar tareas comunes de administración en SQL Server, como:
 - Backups automáticos: Un script para realizar copias de seguridad completas y diferenciales.
 - Optimización de índices: Un script que reorganice o reconstruya índices en la base de datos según sea necesario.
 - Mantenimiento de estadísticas: Un script que actualice las estadísticas para asegurar un rendimiento óptimo.
-- Configura un job en SQL Server Agent para ejecutar estos scripts automáticamente según una programación definida (diaria, semanal, etc.).
-- Asegúrate de que los scripts también se versionen en Git para control de cambios.
+- Configurar un job en SQL Server Agent para ejecutar estos scripts automáticamente según una programación definida (diaria, semanal, etc.)
+- Asegurarse de que los scripts también se versionen en Git para control de cambios.
 
 **3. Configuración del Pipeline de CI:**
-- Configura el pipeline de CI en tu herramienta de elección (e.g., Jenkins, Azure DevOps) para que:
-- Extraiga los cambios del repositorio Git.
-- Aplique los scripts de modificación de base de datos.
-- Ejecute los scripts de automatización de tareas administrativas.
-- Simula el proceso de CI con un script local en PowerShell o un archivo batch, si no dispones de un servidor CI real.
+- Configurar el Pipeline de CI en tu herramienta de elección (e.g., Jenkins, Azure DevOps) para que:
+- Extraer los cambios del repositorio Git.
+- Aplicar los scripts de modificación de base de datos.
+- Ejecutar los scripts de automatización de tareas administrativas.
+- Simular el proceso de CI con un script local en PowerShell o un archivo batch, si no dispones de un servidor CI real.
 
 **4. Pruebas Automatizadas de Base de Datos:**
-- Instala tSQLt en una base de datos de prueba para realizar pruebas unitarias.
-- Crea una serie de pruebas unitarias y de integración, como:
-- Validación de integridad de datos: Asegura que los cambios en la base de datos no afecten la integridad referencial ni los constraints.
-- Rendimiento de consultas: Prueba que los tiempos de respuesta para ciertas consultas clave se mantengan dentro de los límites esperados.
-- Pruebas de automatización de tareas: Verifica que las tareas administrativas (backups, optimización de índices) se ejecuten correctamente y produzcan los resultados esperados.
-- Configura el pipeline para que ejecute estas pruebas antes de aplicar cualquier cambio a la base de datos.
+- Instalar tSQLt en una base de datos de prueba para realizar pruebas unitarias.
+- Crear una serie de pruebas unitarias y de integración, como:
+- Validación de integridad de datos: Asegurar que los cambios en la base de datos no afecten la integridad referencial ni los constraints.
+- Rendimiento de consultas: Probar que los tiempos de respuesta para ciertas consultas clave se mantengan dentro de los límites esperados.
+- Pruebas de automatización de tareas: Verificar que las tareas administrativas (backups, optimización de índices) se ejecuten correctamente y produzcan los resultados esperados.
+- Configurar el Pipeline para que ejecute estas pruebas antes de aplicar cualquier cambio a la base de datos.
 
 **5. Despliegue Continuo (CD):**
-- Configura un paso en el pipeline de CI para que, una vez que los cambios y las pruebas se hayan validado, los scripts se implementen automáticamente en una instancia de producción o en una base de datos simulada.
-- Asegúrate de que el despliegue ocurra solo si todas las pruebas unitarias y de integración se completan con éxito.
+- Configurar un paso en el Pipeline de CI para que, una vez que los cambios y las pruebas se hayan validado, los scripts se implementen automáticamente en una instancia de producción o en una base de datos simulada.
+- Asegurarse de que el despliegue ocurra solo si todas las pruebas unitarias y de integración se completan con éxito.
 
 **6. Prueba del Pipeline Completo:**
-- Realiza un cambio en los scripts de la base de datos o las tareas administrativas (por ejemplo, ajusta un índice o actualiza las estadísticas).
-- Haz commit y push de los cambios al repositorio Git.
-- Observa cómo el pipeline de CI extrae los cambios, ejecuta las pruebas automatizadas y aplica las modificaciones en la base de datos de prueba.
-- Verifica que las tareas administrativas (backups, optimización, mantenimiento) se ejecutan de manera automática y correcta.
+- Realizar un cambio en los scripts de la base de datos o las tareas administrativas (por ejemplo, ajusta un índice o actualiza las estadísticas).
+- Hacer commit y push de los cambios al repositorio Git.
+- Observar cómo el Pipeline de CI extrae los cambios, ejecutar las pruebas automatizadas y aplicar las modificaciones en la base de datos de prueba.
+- Verificar que las tareas administrativas (backups, optimización, mantenimiento) se ejecutan de manera automática y correcta.
 
 
 
@@ -121,14 +121,14 @@ EXEC sp_MSforeachtable 'UPDATE STATISTICS ? WITH FULLSCAN';
 
 ### Tareas Automatizadas en SQL Server Agent:
 - Backup Automático: Puedes configurar este script como un job en el SQL Server Agent que se ejecute diariamente o semanalmente para crear copias de seguridad automáticas.
-- Mantenimiento de Índices y Estadísticas: Configura otro job en el SQL Server Agent para ejecutar los scripts de mantenimiento de índices y actualización de estadísticas en horarios de baja actividad, como durante la noche.
+- Mantenimiento de Índices y Estadísticas: Configurar otro job en el SQL Server Agent para ejecutar los scripts de mantenimiento de índices y actualización de estadísticas en horarios de baja actividad, como durante la noche.
 
 ### Instrucciones para Configurar Tareas en SQL Server Agent:
 - Abre SQL Server Management Studio (SSMS).
 - Expande el nodo de SQL Server Agent.
-- Crea un nuevo Job y agrega un Step que ejecute los scripts anteriores según el mantenimiento que quieras automatizar (backups, índices o estadísticas).
-- Define el Schedule de acuerdo a la frecuencia deseada (diario, semanal, etc.).
-- Guarda el Job y verifica que se ejecute correctamente según lo programado.
+- Crear un nuevo Job y agrega un Step que ejecute los scripts anteriores según el mantenimiento que quieras automatizar (backups, índices o estadísticas).
+- Definir el Schedule de acuerdo a la frecuencia deseada (diario, semanal, etc.).
+- Guardar el Job y verificar que se ejecute correctamente según lo programado.
 
 
 ### Resultado esperado
