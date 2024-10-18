@@ -39,7 +39,7 @@
 
 ### 2. **Creación de alertas**<br>
 **A.** Configurar alertas basadas en errores del sistema:<br>
-- Puedes configurar alertas para monitorear errores específicos del sistema. Por ejemplo, el error 823 indica un problema de escritura en disco.<br>
+- Configurar alertas para monitorear errores específicos del sistema. Por ejemplo, el error 823 indica un problema de escritura en disco.<br>
 - Ir a SQL Server Agent > Alerts > "New Alert". Crear una alerta para el error 823, de la siguiente manera:<br>
     ```sql
     USE msdb;
